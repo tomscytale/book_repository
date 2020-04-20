@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, jsonify, make_response, request as http_request
 import mongoengine
 
-from book_request.documents import Book, Request
+from .documents import Book, Request
 
 bp = Blueprint('book_request', __name__, url_prefix='/request')
 
