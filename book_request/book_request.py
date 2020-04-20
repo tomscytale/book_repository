@@ -33,11 +33,11 @@ def request_book():
         return jsonify_requests(Request.objects.all())
 
     elif http_request.method == 'POST':
-        if not http_request.json or 'title' not in http_request.json or 'email' not in http_request.json:
-            json_abort('Request must include "email" and "title"')
-
-        title = http_request.json['title']
-        email = http_request.json['email']
+        try:
+            title = http_request.json['title']
+            email = http_request.json['email']
+        except KeyError:
+            json_abort("Request must include 'email' and 'title'")
 
         try:
             book = Book.objects.get(title=title)
