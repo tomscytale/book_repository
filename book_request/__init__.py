@@ -8,6 +8,7 @@ db = MongoEngine()
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config['MONGODB_DB'] = 'library'
+    # comment out this line if not running in a container
     app.config['MONGODB_HOST'] = 'mongo'
     app.config['SECRET_KEY'] = '<replace with a secret key>'
     db.init_app(app)
